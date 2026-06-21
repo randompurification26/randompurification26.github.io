@@ -76,54 +76,8 @@ section {
   border-bottom: 1px solid var(--line);
 }
 
-.construction-notice {
-  position: relative;
-  padding: 22px 24px;
-  margin: 10px 0 28px;
-  overflow: hidden;
-  border: 1px solid rgba(20, 95, 103, 0.18);
-  border-radius: 20px;
-  background:
-    linear-gradient(115deg, rgba(255, 249, 239, 0.96), rgba(223, 241, 236, 0.86) 52%, rgba(255, 232, 204, 0.78)),
-    radial-gradient(circle at 100% 0%, rgba(67, 170, 191, 0.2), transparent 36%);
-  box-shadow: 0 14px 36px rgba(87, 64, 37, 0.1);
-}
-
-.construction-notice::before {
-  content: "";
-  position: absolute;
-  inset: 0;
-  background-image:
-    linear-gradient(rgba(20, 95, 103, 0.08) 1px, transparent 1px),
-    linear-gradient(90deg, rgba(20, 95, 103, 0.08) 1px, transparent 1px);
-  background-size: 28px 28px;
-  mask-image: linear-gradient(90deg, transparent, #000 26%, #000 80%, transparent);
-  pointer-events: none;
-}
-
-.construction-copy {
-  position: relative;
-  z-index: 1;
-  max-width: 42rem;
-}
-
-.construction-copy p {
-  margin: 0;
-  color: #3d4f58;
-}
-
-.construction-kicker {
-  display: inline-block;
-  margin-bottom: 6px !important;
-  color: var(--accent) !important;
-  font-size: 0.82rem;
-  font-weight: 700;
-  letter-spacing: 0.08em;
-  text-transform: uppercase;
-}
-
 .workshop-image-section {
-  padding: 0 0 2px;
+  padding: 0 0 8px;
   border-bottom: 0;
 }
 
@@ -193,6 +147,62 @@ h3 {
   font-size: 1rem;
 }
 
+.talk-details {
+  min-width: 0;
+}
+
+.talk-details summary {
+  cursor: pointer;
+  list-style: none;
+}
+
+.talk-details summary::-webkit-details-marker {
+  display: none;
+}
+
+.talk-details summary:hover {
+  color: var(--accent);
+  text-decoration: underline;
+  text-decoration-color: rgba(20, 95, 103, 0.35);
+  text-underline-offset: 0.16em;
+}
+
+.talk-details summary::after {
+  content: " +";
+  color: var(--muted);
+  font-size: 0.92rem;
+}
+
+.talk-details[open] summary::after {
+  content: " -";
+}
+
+.talk-abstract {
+  margin-top: 10px;
+  padding: 12px 14px;
+  border-left: 3px solid var(--accent-soft);
+  background: rgba(223, 241, 236, 0.24);
+  color: #3d4f58;
+  font-size: 0.95rem;
+}
+
+.talk-abstract p + p {
+  margin-top: 10px;
+}
+
+.talk-abstract ul + p {
+  margin-top: 10px;
+}
+
+.talk-abstract ul {
+  margin: 10px 0 0;
+  padding-left: 1.2rem;
+}
+
+.talk-abstract li + li {
+  margin-top: 6px;
+}
+
 a {
   color: var(--accent);
   text-decoration-color: rgba(20, 95, 103, 0.35);
@@ -211,47 +221,24 @@ a:hover {
 }
 
 .organizer-card {
-  width: min(100%, 120px);
+  width: min(100%, 160px);
   margin: 0 auto;
 }
 
 .organizer-card p {
-  margin: 12px 0 0;
+  margin: 0;
   text-align: center;
   white-space: nowrap;
 }
 
-.organizer-photo {
-  aspect-ratio: 1 / 1;
-  width: 100%;
-  border-radius: 20px;
-  border: 1.5px dashed rgba(20, 95, 103, 0.35);
-  background:
-    linear-gradient(135deg, rgba(223, 241, 236, 0.75), rgba(255, 249, 239, 0.92)),
-    repeating-linear-gradient(
-      45deg,
-      rgba(20, 95, 103, 0.04) 0,
-      rgba(20, 95, 103, 0.04) 14px,
-      transparent 14px,
-      transparent 28px
-    );
-}
-
-.workshop-image-placeholder {
-  width: 100%;
-  min-height: 280px;
-  margin-top: 0;
+.workshop-image {
+  display: block;
+  width: min(100%, 720px);
+  height: auto;
+  margin: 0 auto;
   border-radius: 24px;
-  border: 1.5px dashed rgba(20, 95, 103, 0.35);
-  background:
-    linear-gradient(135deg, rgba(223, 241, 236, 0.6), rgba(255, 249, 239, 0.92)),
-    repeating-linear-gradient(
-      45deg,
-      rgba(20, 95, 103, 0.04) 0,
-      rgba(20, 95, 103, 0.04) 14px,
-      transparent 14px,
-      transparent 28px
-    );
+  border: 1px solid rgba(20, 95, 103, 0.16);
+  box-shadow: 0 14px 36px rgba(87, 64, 37, 0.1);
 }
 
 @media (min-width: 720px) {
@@ -273,16 +260,16 @@ a:hover {
     grid-template-columns: repeat(2, minmax(0, 1fr));
   }
 
-  .construction-notice {
-    padding: 20px;
-  }
-
   .talk {
     grid-template-columns: auto minmax(0, 1fr);
     gap: 2px 12px;
   }
 
   .talk-title {
+    grid-column: 1 / -1;
+  }
+
+  .talk-details {
     grid-column: 1 / -1;
   }
 }
